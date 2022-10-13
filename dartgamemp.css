@@ -763,3 +763,11 @@ margin-bottom: 3em;
  .table div{
      margin: 1.5em 0;
  }
+
+ .startHs, .nextHs{
+     text-align: center;
+ }
+ .startHs button, .nextHs button {
+     background: #2a3aa1;
+     color: #fbfbfb;
+ }
