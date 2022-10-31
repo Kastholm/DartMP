@@ -1,3 +1,12 @@
+.console{
+     background: rgb(229, 59, 59);
+     width: 5em;
+     position: fixed;
+     top: 0;
+     right: 30%;
+     font-size: 2.5rem;
+}
+
 
 @media only screen and (max-width: 40em) {
      html {
@@ -22,15 +31,20 @@
    }
 html{
      /* overflow: hidden; */
+     max-width: 1640px;
+     position: relative;
+     margin: 0 auto;
 }
 body{
      background-image: url('img/background.jpg');
      background-size: cover;
      background-repeat: no-repeat;
     height: 100vh;
+    
     font-family: mono45-headline, monospace;
 font-weight: 700;
 font-style: normal;
+overflow-x: hidden;
 /* overflow: hidden; */
 }
 
@@ -39,7 +53,7 @@ font-style: normal;
     transition: .2s;
      padding: 0em;
      color: #fbfbfb;
-     
+     max-width: 1640px;
 }
 .dart-body div{
      margin: auto 0;
@@ -182,6 +196,7 @@ button:hover{
 
 .restart {
      background-color: #ff0008;
+     display: none;
 }
 .start, .add, .next{
      transition: .5s;
@@ -357,13 +372,20 @@ input[type='checkbox'] {
    }
    .fa-circle-xmark, .fa-arrow-left{
         position: absolute;
-        right: 5%;
-        top: 0%;
-        font-size: 2rem;
+        right: -3%;
+        top: -2%;
+        font-size: 3.3rem;
         color: red;
-        padding: 1em .2em;
+        border-radius: 150px;
+        background-color: rgb(0, 0, 0);
+        
         z-index: 2;
         cursor: pointer;
+        transition: .2s;
+   }
+   .fa-circle-xmark:hover {
+     transform: scale(1.1);
+     transition: .2s;
    }
    .activity h2, .shortcuts h2 {
         text-align: center;
@@ -548,20 +570,31 @@ br {
 .information, .historik{
      text-align: center;
      position: fixed;
-     inset: 12%;
+     inset: 4%;
      color: #181414;
-     background: rgba(255, 255, 255, 0.363);
+     max-width: 1440px;
+
+     background: rgba(255, 255, 255, 0.859);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.32);
 backdrop-filter: blur(6.2px);
 -webkit-backdrop-filter: blur(6.2px);
 border: 1px solid rgba(255, 255, 255, 0.451);
      z-index: 99;
-     overflow: scroll;
+     
 transform: scale(0);
 }
-.historik {
-    
+.pointTable {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+.pointTable div {
+     width: 35%;
+}
+.startButLine{
+     display: none;
 }
 
 .ani {
@@ -574,15 +607,18 @@ transform: scale(0);
 }
 .information h1, .historik h1 {
      font-size: 3rem;
-     margin-bottom: 0;
+     margin-bottom: .5em;
+     margin-top: .5em;
 }
 .information h1 b, .historik h1 b {
      font-size: 3rem;
 }
 .information h2, .historik h2 {
      font-size: 1.5rem;
+    
 }
 .information h2 b, h3 b {
+
      font-size: 1.7rem;
      color: rgb(110, 246, 110);
 }
@@ -663,8 +699,12 @@ font-size: 1.2rem;
 }
 .date{
      font-size: 2.5rem !important;
-     color: rgb(228, 136, 86);
-     margin-top: 0;
+     color: rgb(36, 44, 67);
+     margin: 0;
+    
+}
+.date b {
+     color: rgba(0, 0, 255, 0.635);
 }
 
 .info {
@@ -703,6 +743,7 @@ font-size: 1.2rem;
 .highScore {
      color: #fbfbfb;
      background: blue;
+     display: none;
 }
 
 #dartboard #areas g path:hover,
@@ -712,14 +753,15 @@ font-size: 1.2rem;
     fill: rgb(0, 110, 255);
 }
 .board{
+   
      position: fixed;
      display: grid; place-content: end right;
      border-radius: 10px;
-     /* inset: 50%;
+     inset: 50%;
      overflow: hidden;
-     pointer-events: none; */
+     pointer-events: none;
 
-     inset: 2%;
+    /*  inset: 2%; */
      pointer-events: visible;
      transition: 1s;
 
@@ -727,6 +769,9 @@ font-size: 1.2rem;
      color: #fbfbfb;
      
      transition: 1s;
+     /* -------------------------- Dartspil ikke synligt ------------------------- */
+    
+     
 }
 #dartboard{
 margin-bottom: 3em;
@@ -736,6 +781,9 @@ margin-bottom: 3em;
      inset: 2%;
      pointer-events: visible;
      transition: 1s;
+     
+     z-index: 99;
+     
 }
 .board svg {
      height: 40em;
