@@ -501,7 +501,7 @@ input[type='checkbox'] {
 
 .rightPanel{
     
-     position: absolute;
+     position: fixed;
      right: 0;
      top: 0;
      bottom: 0;
@@ -516,7 +516,6 @@ input[type='checkbox'] {
      top: 0;
      
      /* height: 100vh; */
-     overflow: hidden;
      
 }
 .gameInfo{

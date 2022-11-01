@@ -71,6 +71,7 @@ JesperJacob = new Team("Jesper", "Jacob", "Jesper & Jacob", 0, 17);
 LarsRazzer = new Team("Lars", "Razzer", "Lars & Razzer", 0, 15);
 MortenTorben = new Team("Morten", "Torben", "Morten & Torben", 0, 16);
 
+
 /* -------------------------------------------------------------------------- */
 /**                   Class til at give selve spillet værdier                  */
 /* -------------------------------------------------------------------------- */
@@ -107,7 +108,7 @@ DartGame = new Game(
   "",
   "",
   "",
-  /* gameRound  */ 1,
+  /* gameRound  */ 2,
   /* round */ 1,
   /* currentTeam */ 0,
   /* placement  */ 1
@@ -121,21 +122,23 @@ let playerturn = [""];
 let playerturn2 = [""];
 function teamOutput() {
   if (DartGame.gameRound === 1) {
+    let storagePlayer = JSON.parse(localStorage.history);
+  console.log(storagePlayer[0].Ypoints);
     let lackingPlayer = Math.max(
-      JesperJacob.totalPoint,
-      LarsRazzer.totalPoint,
-      MortenTorben.totalPoint
+      storagePlayer[0].Ypoints,
+      storagePlayer[1].Ypoints,
+      storagePlayer[2].Ypoints
     );
     let leadingPlayer = Math.min(
-      JesperJacob.totalPoint,
-      LarsRazzer.totalPoint,
-      MortenTorben.totalPoint
+      storagePlayer[0].Ypoints,
+      storagePlayer[1].Ypoints,
+      storagePlayer[2].Ypoints
     );
     //
     /* ---------------------------- Jesper & Jacob svagest --------------------------- */
     if (
-      lackingPlayer === JesperJacob.totalPoint &&
-      leadingPlayer === LarsRazzer.totalPoint
+      lackingPlayer === storagePlayer[0].Ypoints &&
+      leadingPlayer === storagePlayer[1].Ypoints
     ) {
       team = [JesperJacob.teamName, MortenTorben.teamName, LarsRazzer.teamName];
       playerturn = [
@@ -153,8 +156,8 @@ function teamOutput() {
       LarsRazzer.addTeam(2);
       return;
     } else if (
-      lackingPlayer === JesperJacob.totalPoint &&
-      leadingPlayer === MortenTorben.totalPoint
+      lackingPlayer === storagePlayer[0].Ypoints &&
+      leadingPlayer === storagePlayer[2].Ypoints
     ) {
       team = [JesperJacob.teamName, LarsRazzer.teamName, MortenTorben.teamName];
       playerturn = [
@@ -174,8 +177,8 @@ function teamOutput() {
     }
     /* ---------------------------- Lars & Razzer svagest --------------------------- */
     if (
-      lackingPlayer === LarsRazzer.totalPoint &&
-      leadingPlayer === JesperJacob.totalPoint
+      lackingPlayer === storagePlayer[1].Ypoints &&
+      leadingPlayer === storagePlayer[0].Ypoints
     ) {
       team = [LarsRazzer.teamName, MortenTorben.teamName, JesperJacob.teamName];
       playerturn = [
@@ -193,8 +196,8 @@ function teamOutput() {
       JesperJacob.addTeam(2);
       return;
     } else if (
-      lackingPlayer === LarsRazzer.totalPoint &&
-      leadingPlayer === MortenTorben.totalPoint
+      lackingPlayer === storagePlayer[1].Ypoints &&
+      leadingPlayer === storagePlayer[2].Ypoints
     ) {
       team = [LarsRazzer.teamName, JesperJacob.teamName, MortenTorben.teamName];
       playerturn = [
@@ -214,8 +217,8 @@ function teamOutput() {
     }
     /* ---------------------------- Morten & Torben svagest --------------------------- */
     if (
-      lackingPlayer === MortenTorben.totalPoint &&
-      leadingPlayer === JesperJacob.totalPoint
+      lackingPlayer === storagePlayer[2].Ypoints &&
+      leadingPlayer === storagePlayer[0].Ypoints
     ) {
       team = [MortenTorben.teamName, LarsRazzer.teamName, JesperJacob.teamName];
       playerturn = [
@@ -233,8 +236,8 @@ function teamOutput() {
       JesperJacob.addTeam(2);
       return;
     } else if (
-      lackingPlayer === MortenTorben.totalPoint &&
-      leadingPlayer === LarsRazzer.totalPoint
+      lackingPlayer === storagePlayer[2].Ypoints &&
+      leadingPlayer === storagePlayer[1].Ypoints
     ) {
       team = [MortenTorben.teamName, JesperJacob.teamName, LarsRazzer.teamName];
       playerturn = [
@@ -253,21 +256,22 @@ function teamOutput() {
       return;
     }
   } else if (DartGame.gameRound >= 2) {
+    let storagePlayer = JSON.parse(localStorage.history);
     let lackingPlayer = Math.max(
-      JesperJacob.dailyPoint,
-      LarsRazzer.dailyPoint,
-      MortenTorben.dailyPoint
+      storagePlayer[0].points,
+      storagePlayer[1].points,
+      storagePlayer[2].points
     );
     let leadingPlayer = Math.min(
-      JesperJacob.dailyPoint,
-      LarsRazzer.dailyPoint,
-      MortenTorben.dailyPoint
+      storagePlayer[0].points,
+      storagePlayer[1].points,
+      storagePlayer[2].points
     );
     //
     /* ---------------------------- Jesper & Jacob svagest --------------------------- */
     if (
-      lackingPlayer === JesperJacob.dailyPoint &&
-      leadingPlayer === LarsRazzer.dailyPoint
+      lackingPlayer === storagePlayer[0].points &&
+      leadingPlayer === storagePlayer[1].points
     ) {
       team = [JesperJacob.teamName, MortenTorben.teamName, LarsRazzer.teamName];
       playerturn = [
@@ -285,8 +289,8 @@ function teamOutput() {
       MortenTorben.addTeam(2);
       return;
     } else if (
-      lackingPlayer === JesperJacob.dailyPoint &&
-      leadingPlayer === MortenTorben.dailyPoint
+      lackingPlayer === storagePlayer[0].points &&
+      leadingPlayer === storagePlayer[2].points
     ) {
       team = [JesperJacob.teamName, LarsRazzer.teamName, MortenTorben.teamName];
       playerturn = [
@@ -306,8 +310,8 @@ function teamOutput() {
     }
     /* ---------------------------- Lars & Razzer svagest --------------------------- */
     if (
-      lackingPlayer === LarsRazzer.dailyPoint &&
-      leadingPlayer === JesperJacob.dailyPoint
+      lackingPlayer === storagePlayer[1].points &&
+      leadingPlayer === storagePlayer[0].points
     ) {
       team = [LarsRazzer.teamName, MortenTorben.teamName, JesperJacob.teamName];
       playerturn = [
@@ -325,8 +329,8 @@ function teamOutput() {
       JesperJacob.addTeam(2);
       return;
     } else if (
-      lackingPlayer === LarsRazzer.dailyPoint &&
-      leadingPlayer === MortenTorben.dailyPoint
+      lackingPlayer === storagePlayer[1].points &&
+      leadingPlayer === storagePlayer[2].points
     ) {
       team = [LarsRazzer.teamName, JesperJacob.teamName, MortenTorben.teamName];
       playerturn = [
@@ -346,8 +350,8 @@ function teamOutput() {
     }
     /* ---------------------------- Morten & Torben svagest --------------------------- */
     if (
-      lackingPlayer === MortenTorben.dailyPoint &&
-      leadingPlayer === JesperJacob.dailyPoint
+      lackingPlayer === storagePlayer[2].points &&
+      leadingPlayer === storagePlayer[0].points
     ) {
       team = [MortenTorben.teamName, LarsRazzer.teamName, JesperJacob.teamName];
       playerturn = [
@@ -365,8 +369,8 @@ function teamOutput() {
       JesperJacob.addTeam(2);
       return;
     } else if (
-      lackingPlayer === MortenTorben.dailyPoint &&
-      leadingPlayer === LarsRazzer.dailyPoint
+      lackingPlayer === storagePlayer[2].points &&
+      leadingPlayer === storagePlayer[1].points
     ) {
       team = [MortenTorben.teamName, JesperJacob.teamName, LarsRazzer.teamName];
       playerturn = [
@@ -408,6 +412,7 @@ document.querySelector(".start").addEventListener("click", () => {
 let nextButton = document.querySelectorAll(".next");
 
 for (x = 0; x < DartGame.teams().length; x++) {
+  let storagePlayer = JSON.parse(localStorage.history);
   nextButton[x].addEventListener("click", () => {
     let notWinners = Array.from(DartGame.teams()).filter(
       ({ classList }) => !classList.contains("winPlayer")
@@ -432,41 +437,49 @@ for (x = 0; x < DartGame.teams().length; x++) {
       sidePanel();
     } else {
       for (x = 0; x < notWinners.length; x++) {
-        /* console.log(notWinners[x].document.querySelector('.playerName').innerHTML = 'something') */
         notWinners[x].classList.add("winPlayer");
         notWinners[x].classList.add("thirdPlace");
-        console.log(document.querySelector('.thirdPlace .playerName').value)
-        if(document.querySelector('.thirdPlace .playerName').value === JesperJacob.teamName){
-          JesperJacob.dailyPoint = JesperJacob.dailyPoint + DartGame.place;
+        console.log(document.querySelector(".thirdPlace .playerName").value);
+        if (
+          document.querySelector(".thirdPlace .playerName").value ===
+          JesperJacob.teamName
+        ) {
+          JesperJacob.dailyPoint = storagePlayer[0].points + DartGame.place;
           console.log(`JJ ${JesperJacob.dailyPoint} point`);
-        }
-        else if(document.querySelector('.thirdPlace .playerName').value === LarsRazzer.teamName){
-          LarsRazzer.dailyPoint = LarsRazzer.dailyPoint + DartGame.place;
+        } else if (
+          document.querySelector(".thirdPlace .playerName").value ===
+          LarsRazzer.teamName
+        ) {
+          LarsRazzer.dailyPoint = storagePlayer[1].points + DartGame.place;
           console.log(`LZ ${LarsRazzer.dailyPoint} point`);
-        }
-        else if(document.querySelector('.thirdPlace .playerName').value === MortenTorben.teamName){
-          MortenTorben.dailyPoint = MortenTorben.dailyPoint + DartGame.place;
+        } else if (
+          document.querySelector(".thirdPlace .playerName").value ===
+          MortenTorben.teamName
+        ) {
+          MortenTorben.dailyPoint = storagePlayer[2].points + DartGame.place;
           console.log(`MT ${MortenTorben.dailyPoint} point`);
         }
         DartGame.teams()[0].classList.remove("activePlayer");
         DartGame.teams()[1].classList.remove("activePlayer");
         DartGame.teams()[2].classList.remove("activePlayer");
-  let placering = document.createElement("p");
-  placering.classList.add("placeReset");
-  notWinners[x].appendChild(placering);
-  placering.innerHTML = `${DartGame.place}. pladsen <br> <button class='openPlayer'>åben spiller</button>`;
-  celebrate();
-  setTimeout(() => {
-    celebrate();
-  }, "1000");
-  sidePanel(); 
-  logScore();
-  DartGame.place++;
-      
+        let placering = document.createElement("p");
+        placering.classList.add("placeReset");
+        notWinners[x].appendChild(placering);
+        placering.innerHTML = `${DartGame.place}. pladsen <br> <button class='openPlayer'>åben spiller</button>`;
+        celebrate();
+        setTimeout(() => {
+          celebrate();
+        }, "1000");
+        sidePanel();
+        logScore();
+       /*  DartGame.place++; */
+
         // make this look like the others
         // fullPlate(notWinners[x].innerHTML);
       }
     }
+    /* localStorage.clear(); */
+              localS();
   });
 }
 /* -------------------------------------------------------------------------- */
@@ -551,47 +564,55 @@ boxes.forEach((box, index) => {
         c1++;
         if (c1 === 3) {
           team = DartGame.teamNames()[activeTeam].value;
-          if(DartGame.teamNames()[activeTeam].value === JesperJacob.teamName){
+          if (DartGame.teamNames()[activeTeam].value === JesperJacob.teamName) {
             JesperJacob.dailyPoint = JesperJacob.dailyPoint + DartGame.place;
             console.log(`JJ ${JesperJacob.dailyPoint} point`);
-          }
-          else if(DartGame.teamNames()[activeTeam].value === LarsRazzer.teamName){
-            LarsRazzer.dailyPoint = LarsRazzer.dailyPoint + DartGame.place;
-            console.log(`LZ ${LarsRazzer.dailyPoint} point`);
-          }
-          else if(DartGame.teamNames()[activeTeam].value === MortenTorben.teamName){
-            MortenTorben.dailyPoint = MortenTorben.dailyPoint + DartGame.place;
-            console.log(`MT ${MortenTorben.dailyPoint} point`);
-          }
+          } else if (
+            DartGame.teamNames()[activeTeam].value === LarsRazzer.teamName
+            ) {
+              LarsRazzer.dailyPoint = LarsRazzer.dailyPoint + DartGame.place;
+              console.log(`LZ ${LarsRazzer.dailyPoint} point`);
+            } else if (
+              DartGame.teamNames()[activeTeam].value === MortenTorben.teamName
+              ) {
+                MortenTorben.dailyPoint = MortenTorben.dailyPoint + DartGame.place;
+                console.log(`MT ${MortenTorben.dailyPoint} point`);
+              }
+             /*  localStorage.clear(); */
+              localS();
           logScore();
           fullPlate(team);
-        
+
           //
         }
         return;
       }
-/* ----------------- Minuser værdi hvis man unchecker en box ---------------- */
+      /* ----------------- Minuser værdi hvis man unchecker en box ---------------- */
       c1--;
     }
     //
-    else if(activeTeam === 1) {
+    else if (activeTeam === 1) {
       console.log("p2 active");
       if (box.checked) {
         c2++;
         if (c2 === 3) {
           team = DartGame.teamNames()[activeTeam].value;
-          if(DartGame.teamNames()[activeTeam].value === JesperJacob.teamName){
+          if (DartGame.teamNames()[activeTeam].value === JesperJacob.teamName) {
             JesperJacob.dailyPoint = JesperJacob.dailyPoint + DartGame.place;
             console.log(`JJ ${JesperJacob.dailyPoint} point`);
-          }
-          else if(DartGame.teamNames()[activeTeam].value === LarsRazzer.teamName){
-            LarsRazzer.dailyPoint = LarsRazzer.dailyPoint + DartGame.place;
-            console.log(`LZ ${LarsRazzer.dailyPoint} point`);
-          }
-          else if(DartGame.teamNames()[activeTeam].value === MortenTorben.teamName){
-            MortenTorben.dailyPoint = MortenTorben.dailyPoint + DartGame.place;
-            console.log(`MT ${MortenTorben.dailyPoint} point`);
-          }
+          } else if (
+            DartGame.teamNames()[activeTeam].value === LarsRazzer.teamName
+            ) {
+              LarsRazzer.dailyPoint = LarsRazzer.dailyPoint + DartGame.place;
+              console.log(`LZ ${LarsRazzer.dailyPoint} point`);
+            } else if (
+              DartGame.teamNames()[activeTeam].value === MortenTorben.teamName
+              ) {
+                MortenTorben.dailyPoint = MortenTorben.dailyPoint + DartGame.place;
+                console.log(`MT ${MortenTorben.dailyPoint} point`);
+              }
+             /*  localStorage.clear(); */
+              localS();
           logScore();
           fullPlate(team);
         }
@@ -604,18 +625,22 @@ boxes.forEach((box, index) => {
         c3++;
         if (c3 === 3 /* 33 */) {
           team = DartGame.teamNames()[activeTeam].value;
-          if(DartGame.teamNames()[activeTeam].value === JesperJacob.teamName){
+          if (DartGame.teamNames()[activeTeam].value === JesperJacob.teamName) {
             JesperJacob.dailyPoint = JesperJacob.dailyPoint + DartGame.place;
             console.log(`JJ ${JesperJacob.dailyPoint} point`);
-          }
-          else if(DartGame.teamNames()[activeTeam].value === LarsRazzer.teamName){
-            LarsRazzer.dailyPoint = LarsRazzer.dailyPoint + DartGame.place;
-            console.log(`LZ ${LarsRazzer.dailyPoint} point`);
-          }
-          else if(DartGame.teamNames()[activeTeam].value === MortenTorben.teamName){
-            MortenTorben.dailyPoint = MortenTorben.dailyPoint + DartGame.place;
-            console.log(`MT ${MortenTorben.dailyPoint} point`);
-          }
+          } else if (
+            DartGame.teamNames()[activeTeam].value === LarsRazzer.teamName
+            ) {
+              LarsRazzer.dailyPoint = LarsRazzer.dailyPoint + DartGame.place;
+              console.log(`LZ ${LarsRazzer.dailyPoint} point`);
+            } else if (
+              DartGame.teamNames()[activeTeam].value === MortenTorben.teamName
+              ) {
+                MortenTorben.dailyPoint = MortenTorben.dailyPoint + DartGame.place;
+                console.log(`MT ${MortenTorben.dailyPoint} point`);
+              }
+              /* localStorage.clear(); */
+              localS();
           logScore();
           fullPlate(team);
         }
@@ -643,10 +668,9 @@ function fullPlate(team) {
   setTimeout(() => {
     celebrate();
   }, "1000");
-  
+
   DartGame.place++;
 }
-
 
 /* -------------------------------------------------------------------------- */
 /**                            Fuld Række Function                            */
@@ -735,7 +759,6 @@ function localS() {
       (z) => z["Ypoints"] == this.MortenTorben.totalPoint
     );
     if (historikSpillerOne || historikSpillerTwo || historikSpillerThree) {
-     
       /* historikSpillerOne.points++; */
     } else {
       historyArray.push({
@@ -754,22 +777,42 @@ function localS() {
     }
   } else {
     historyArray = [
-      {teamname: this.JesperJacob.teamName, points: this.JesperJacob.dailyPoint, Ypoints: this.JesperJacob.totalPoint },{teamname: this.LarsRazzer.teamName, points: this.LarsRazzer.dailyPoint, Ypoints: this.LarsRazzer.totalPoint}, {teamname: this.MortenTorben.teamName, points: this.MortenTorben.dailyPoint, Ypoints: this.MortenTorben.totalPoint },
+      {
+        teamname: this.JesperJacob.teamName,
+        points: this.JesperJacob.dailyPoint,
+        Ypoints: this.JesperJacob.totalPoint,
+      },
+      {
+        teamname: this.LarsRazzer.teamName,
+        points: this.LarsRazzer.dailyPoint,
+        Ypoints: this.LarsRazzer.totalPoint,
+      },
+      {
+        teamname: this.MortenTorben.teamName,
+        points: this.MortenTorben.dailyPoint,
+        Ypoints: this.MortenTorben.totalPoint,
+      },
     ];
   }
   // always saves here
   localStorage.setItem("history", JSON.stringify(historyArray));
-  document.querySelector('.logOne').innerHTML = `JJ ${historyArray[0].points} Y ${historyArray[0].Ypoints}`
-  document.querySelector('.logTwo').innerHTML = `LR ${historyArray[1].points} Y ${historyArray[1].Ypoints}`
-  document.querySelector('.logThree').innerHTML = `MT ${historyArray[2].points} Y ${historyArray[2].Ypoints}`
+  document.querySelector(
+    ".logOne"
+  ).innerHTML = `JJ ${historyArray[0].points} Y ${historyArray[0].Ypoints}`;
+  document.querySelector(
+    ".logTwo"
+  ).innerHTML = `LR ${historyArray[1].points} Y ${historyArray[1].Ypoints}`;
+  document.querySelector(
+    ".logThree"
+  ).innerHTML = `MT ${historyArray[2].points} Y ${historyArray[2].Ypoints}`;
+  let storagePlayer = JSON.parse(localStorage.history);
+  console.log(storagePlayer[0].Ypoints);
 }
 
- localS()
- 
-let storagePlayer = JSON.parse(localStorage.history)
-console.log(storagePlayer[0].points)
 function logScore() {
-  document.querySelector('.logOne').innerHTML = `JJ ${JesperJacob.dailyPoint}`
-  document.querySelector('.logTwo').innerHTML = `LR ${LarsRazzer.dailyPoint}`
-  document.querySelector('.logThree').innerHTML = `MT ${MortenTorben.dailyPoint}`
+  document.querySelector(".logOne").innerHTML = `JJ ${JesperJacob.dailyPoint}`;
+  document.querySelector(".logTwo").innerHTML = `LR ${LarsRazzer.dailyPoint}`;
+  document.querySelector(
+    ".logThree"
+  ).innerHTML = `MT ${MortenTorben.dailyPoint}`;
 }
