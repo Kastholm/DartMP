@@ -525,7 +525,7 @@ function sidePanel() {
     team.innerHTML = `Nuværende Hold: <br><b>${
       DartGame.teamNames()[activeTeam].value
     } </b></b><br>Spillers tur: <br><b>${playerturn2[activeTeam]}`;
-    index.innerHTML = `Spil: <br><b>${DartGame.gameRound}</b><br>Runde: <br><b>${DartGame.round}</b>`;
+    index.innerHTML = `Spil: <br><b style='font-size: 24px;'>kommer snart</b><br>Runde: <br><b>${DartGame.round}</b>`;
     console.log("hh");
     return;
     // Hvis spille ikke startet vis point, hvis spil startet ikke vis. (fjern/vis div)
@@ -533,7 +533,7 @@ function sidePanel() {
   team.innerHTML = `Nuværende Hold: <br><b>${
     DartGame.teamNames()[activeTeam].value
   } </b></b><br>Spillers tur: <br><b>${playerturn[activeTeam]}`;
-  index.innerHTML = `Spil: <br><b>${DartGame.gameRound}</b><br>Runde: <br><b>${DartGame.round}</b>`;
+  index.innerHTML = `Spil: <br><b style='font-size: 24px;'>kommer snart</b><br>Runde: <br><b>${DartGame.round}</b>`;
   console.log("hh");
 }
 

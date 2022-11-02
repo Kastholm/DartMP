@@ -1,12 +1,21 @@
+
 .console{
      background: rgb(229, 59, 59);
      width: 5em;
-     position: relative;
+     position: fixed;
+     display: none;
      top: 0;
-     right: 30%;
+     right: 20%;
      font-size: 2.5rem;
 }
 
+.dartInfo{
+     position: absolute;
+     top: 0;
+     right: 20%;
+     background-color: rgb(199, 199, 199);
+     z-index: -1;
+}
 
 @media only screen and (max-width: 40em) {
      html {
