@@ -1092,7 +1092,7 @@ function hsGameStart() {
             pTable.innerHTML = `<table class='playerTable' border="black">
             <thead>
                 <tr>
-                    <th class='playerHsName' colspan="6">${JesperJacob.playerOne} & ${JesperJacob.playerTwo}</th>
+                    <th class='playerHsName' colspan="6">${JesperJacob.playerOne}</th>
                 </tr>
                 <tr>
                     <th>1</th>
@@ -1107,6 +1107,7 @@ function hsGameStart() {
                   <th class='roundHs'></th>
                   <th class='hsStartPoint'>${startPoint[0]}</th>
               </tr>
+              
             </thead>
             </table>`;
             return;
@@ -1126,7 +1127,7 @@ function hsGameStart() {
             pTable.innerHTML = `<table class='playerTable' border="black">
             <thead>
                 <tr>
-                    <th class='playerHsName' colspan="6">${LarsRazzer.playerOne} & ${LarsRazzer.playerTwo}</th>
+                    <th class='playerHsName' colspan="6">${LarsRazzer.playerOne}</th>
                 </tr>
                 <tr>
                     <th>1</th>
@@ -1134,6 +1135,7 @@ function hsGameStart() {
                     <th>3</th>
                     <th>Samlet</th>
                 </tr>
+                
                 <tr>
                   
                   <th class='roundHs'></th>
@@ -1141,6 +1143,8 @@ function hsGameStart() {
                   <th class='roundHs'></th>
                   <th class='hsStartPoint'>${startPoint[1]}</th>
               </tr>
+              
+              
             </thead>
             </table>`;
             return;
@@ -1159,7 +1163,7 @@ function hsGameStart() {
           pTable.innerHTML = `<table class='playerTable' border="black">
             <thead>
                 <tr>
-                    <th class='playerHsName' colspan="6">${MortenTorben.playerOne} & ${MortenTorben.playerTwo}</th>
+                    <th class='playerHsName' colspan="6">${MortenTorben.playerOne}</th>
                 </tr>
                 <tr>
                     <th>1</th>
@@ -1174,6 +1178,7 @@ function hsGameStart() {
                   <th class='roundHs'></th>
                   <th class='hsStartPoint'>${startPoint[2]}</th>
               </tr>
+              
             </thead>
             </table>`;
         }
@@ -1210,6 +1215,7 @@ function hsGameStart() {
       const cT = document.querySelectorAll(".playerHsName");
       const pT = document.querySelectorAll(".playerTable");
       const fullPoint = document.querySelectorAll(".hsStartPoint");
+     
       if(pt <= 1){
         pT[pt].classList.remove("hsActive");
       }
@@ -1218,12 +1224,29 @@ function hsGameStart() {
       if (pt >= pT.length) {
         /* pt = 0;
         ct = 0; */
-        Swal.fire(`Spillet er done ${fullPoint[0].innerHTML} `)
+        let winHSPlayer = Math.min(
+          fullPoint[0].innerHTML,
+          fullPoint[1].innerHTML,
+          );
+          console.log(winHSPlayer)
+          console.log(fullPoint[0].innerHTML)
+          if(winHSPlayer == fullPoint[0].innerHTML){
+            let winner = cT[0].innerHTML;
+            Swal.fire(`Spillet er done ${cT[0].innerHTML} fik ${fullPoint[0].innerHTML} <br> ${cT[1].innerHTML} fik ${fullPoint[1].innerHTML}<br> Vinderen er ${winner}`)
+          }
+          else if(winHSPlayer == fullPoint[1].innerHTML){
+            let winner = cT[1].innerHTML;
+            Swal.fire(`Spillet er done ${cT[0].innerHTML} fik ${fullPoint[0].innerHTML} <br> ${cT[1].innerHTML} fik ${fullPoint[1].innerHTML}<br> Vinderen er ${winner}`)
+          }
+          else{
+            console.log('none')
+          }
         return
         /* hsRound++; */
       }
       pT[pt].classList.add("hsActive");
-      if(hsRound === 1){
+      if(hsRound === 1){ //her måske
+        
         return;
       }
       let sec = 3;
@@ -1396,6 +1419,7 @@ function hsGameStart() {
       (EightT = new DartField("#s18", "#d18", "#t18", 18, 36, 54)),
       (NittenT = new DartField("#s19", "#d19", "#t19", 19, 38, 57)),
       (Twenty = new DartField("#s20", "#d20", "#t20", 20, 40, 60)),
+      (Bull = new DartField("#Outer", "#Bull", ".logFive", 25, 50, 0)),
     ];
     let collectPoints = [];
     fields = () => {
@@ -1434,6 +1458,15 @@ function hsGameStart() {
         startPoint[2] = startPoint[2] - collectPoints[playerRound];
         fullPoint[2].innerHTML = `${startPoint[2]}`;
       }
+      /* else if (teamCurrent === 3) {
+        roundPoint[playerRound + 9].innerHTML = `${collectPoints[playerRound]}`;
+        startPoint[3] = startPoint[1] - collectPoints[playerRound];
+        fullPoint[3].innerHTML = `${startPoint[3]}`;
+      } else if (teamCurrent === 4) {
+        roundPoint[playerRound + 6].innerHTML = `${collectPoints[playerRound]}`;
+        startPoint[2] = startPoint[2] - collectPoints[playerRound];
+        fullPoint[2].innerHTML = `${startPoint[2]}`;
+      } */
       playerRound++;
       if (playerRound === 3) {
         playerRound = 0;
@@ -1570,3 +1603,11 @@ const moveCursor = (e) => {
 };
 
 window.addEventListener("mousemove", moveCursor);
+
+
+
+document.querySelector('.closeInfo').addEventListener('click', () => { 
+
+document.querySelector('.dartInfo').remove();
+
+ } )

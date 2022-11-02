@@ -14,8 +14,9 @@
      top: 0;
      right: 20%;
      background-color: rgb(199, 199, 199);
-     z-index: -1;
+    
 }
+
 
 @media only screen and (max-width: 40em) {
      html {
