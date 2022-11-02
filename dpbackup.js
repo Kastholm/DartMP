@@ -995,13 +995,13 @@ nextPlayer.innerHTML = `<button class='next'>Næste spiller</button>`; */
 // Pil taste genveje.
 // hurtigere næste spiller
 //Optimere mest til tablet.
-//Genstart plads placering, slet class med winner.
+//Genstart plads placering, slet class med winner. CHECK
 //
 //
 //Jesper/Jacob, Lars/Razzer, Morten/Torben ( Altids point ) && Dagens spil (6 spil)(Oktober);
 //Jesper/Jacob = 17, Lars/Razzer = 15, Morten/Torben = 16. //
 
-// Spiller 1 og Spiller 2 på samme hold. Skifter for hver tur. SEMI CHECK (Hvis slutter på ulige runde tal og starter nyt spil på 1?) (if (runde er ulige inden nyt spil, skift til lige spiller))
+// Spiller 1 og Spiller 2 på samme hold. Skifter for hver tur. CHECK (Hvis slutter på ulige runde tal og starter nyt spil på 1?) (if (runde er ulige inden nyt spil, skift til lige spiller)) CHECK
 //Lave et helt nyt spil til multiplayer.  CHECK
 //Opdel single spiller og multi (så værdier ikke samles) CHECK
 //færreste point spiller først. CHECK
