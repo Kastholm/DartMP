@@ -551,7 +551,7 @@ boxes.forEach((box, index) => {
       let storagePlayer = JSON.parse(localStorage.history);
       if (box.checked) {
         c1++;
-        if (c1 === 3) {
+        if (c1 === 33) {
           team = DartGame.teamNames()[activeTeam].value;
           if (DartGame.teamNames()[activeTeam].value === JesperJacob.teamName) {
             if (storagePlayer[0].points === 0) {
@@ -600,7 +600,7 @@ boxes.forEach((box, index) => {
       let storagePlayer = JSON.parse(localStorage.history);
       if (box.checked) {
         c2++;
-        if (c2 === 3) {
+        if (c2 === 33) {
           team = DartGame.teamNames()[activeTeam].value;
           if (DartGame.teamNames()[activeTeam].value === JesperJacob.teamName) {
             if (storagePlayer[0].points === 0) {
@@ -644,7 +644,7 @@ boxes.forEach((box, index) => {
       console.log("p3 active");
       if (box.checked) {
         c3++;
-        if (c3 === 3 /* 33 */) {
+        if (c3 === 33 /* 33 */) {
           team = DartGame.teamNames()[activeTeam].value;
           if (DartGame.teamNames()[activeTeam].value === JesperJacob.teamName) {
             if (storagePlayer[0].points === 0) {
